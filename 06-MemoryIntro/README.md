@@ -9,7 +9,7 @@ New Number: 20
 ```
 
 Data Segment Before Execution:
-![Before](before.jpg)
+![Before](img/before.jpg)
 
 Data Segment After Execution:
-![After](after.jpg)
+![After](img/after.jpg)
