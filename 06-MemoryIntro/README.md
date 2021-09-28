@@ -12,3 +12,4 @@ Data Segment Before Execution:
 ![Before](before.jpg)
 
 Data Segment After Execution:
+![After](after.jpg)
