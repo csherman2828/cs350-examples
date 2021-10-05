@@ -28,7 +28,9 @@ main:
         la $a0, msg4
         syscall
 
-        j exit              # jump to exit procedure
+exit:
+        li $v0, 10          # gracefully exit
+        syscall
 
 print:
         li $v0, 4           # print msg2
@@ -58,7 +60,3 @@ endlp:
 
         jr $ra              # jump to the return address stored in $ra
                             # this marks the end of the print procedure
-
-exit:
-        li $v0, 10          # gracefully exit
-        syscall
