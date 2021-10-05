@@ -2,8 +2,18 @@
 prompt: .asciiz "Enter value at index "
 colon:  .asciiz ": "
 
-        # .align 2
-array:  .space 80
+        .align 2            # if you don't align, it will cause error
+                            # .align n
+                            #   - aligns to the next byte that can be divided by
+                            #       2^n
+                            #
+                            # In this case, we align to the next 2^2 = 4 bytes
+                            #   Remember, 4 bytes is the size of a word
+
+array:  .space 80           # We want to store 20 integers
+                            # Every integer is the size of a word (4 bytes)
+                            # 20 integers * 4 bytes/integer = 80 bytes
+                            # Thus, we need 80 bytes of space for our array
 
         .text
         .globl main
@@ -28,17 +38,16 @@ loop:
         la $a0, colon
         syscall
 
-        li $v0, 5           # read int into $t1
+        li $v0, 5           # read int into $v0
         syscall
 
-        sw $v0, 0($t1)      # store $v0 (input) in array
+        sw $v0, 0($t1)      # store $v0's value (the input) in array
 
         addi $t0, $t0, 1    # increment index
         addi $t1, $t1, 4    # increment array address
 
         j loop
 
-
 exit:
-        li $v0, 10
+        li $v0, 10          # gracefully exit
         syscall
