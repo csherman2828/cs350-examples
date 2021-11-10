@@ -23,6 +23,7 @@ main:
         addi $s0, $s0, 1    # to include the last number
 
         jal print           # jump to the print procedure
+                            # $ra = (address of next instruction)
 
         li $v0, 4           # print msg4
         la $a0, msg4
